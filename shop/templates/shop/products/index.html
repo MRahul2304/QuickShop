@@ -1,0 +1,41 @@
+{% extends 'shop/layouts/main.html' %}
+
+{% block title %} 
+QuickShop | Online Shopping
+{% endblock title %}
+
+{% block content %}
+<section class="bg-light py-4 my-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h4 class ="mb-3">{{category_name}} Products</h4>
+                <hr style="border-color: #b8bfc2; ">
+                <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">{{category_name}} Collections</li>
+                    </ol>
+                  </nav>
+                  {% include 'shop/inc/message.html' %}
+            </div>
+            {% for item in products %}
+            <div class="col-md-4 col-lg-3">
+                <div class="card my-3">
+                    <img src="{{item.product_image.url}}" class="card-image-top" alt="Categories">
+                    <a href="{% url 'product_details' category_name item.name %}">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary"> {{item.name}} </h5>
+                        <p class="card-text">
+                            <span class="float-start old_price"><s>Rs.{{item.original_price | stringformat:'d'}}</s></span>
+                            <span class="float-end new_price">Rs.{{item.selling_price | stringformat:'d'}} </span>
+                        </p>
+                    </div>
+                    </a>
+                </div>  
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock content %}
