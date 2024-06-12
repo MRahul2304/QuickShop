@@ -10,7 +10,7 @@ QuickShop is a full-featured e-commerce web application built with Django. It of
 - [Project Structure](#project-structure)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- 
+
 ## Features
 
 - User registration and authentication
